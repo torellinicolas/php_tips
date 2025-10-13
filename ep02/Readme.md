@@ -1,30 +1,31 @@
 # ☕ PHP Tips — Episódio 02  
 ## Integração com DataLayer (CoffeeCode)
 
-Este projeto é o **episódio 02** da série **PHP Tips**, com o objetivo de demonstrar o uso da biblioteca **[CoffeeCode/DataLayer](https://github.com/robsonvleite/datalayer)** — um ORM simples e eficiente para PHP.  
+Este projeto é o **episódio 02** da série **PHP Tips**, com o objetivo de demonstrar o uso da biblioteca [CoffeeCode/DataLayer](https://github.com/robsonvleite/datalayer) — um ORM simples e eficiente para PHP.  
 O exemplo implementa **dois modelos relacionais** (`User` e `Address`) e utiliza **Docker** com **Apache**, **PHP 8.1** e **MySQL 8.0** para executar a aplicação.
 
 ---
 
 ## 🧱 Estrutura do Projeto
 
+```
 php_tips/
 └── src/
-└── public/
-└── ep02/
-├── examples/
-│ ├── create.php
-│ ├── read.php
-│ ├── update.php
-│ ├── delete.php
-├── src/
-│ └── Models/
-│ ├── User.php
-│ └── Address.php
-├── composer.json
-├── composer.lock
-└── README.md
-
+    └── public/
+        └── ep02/
+            ├── examples/
+            │   ├── create.php
+            │   ├── read.php
+            │   ├── update.php
+            │   ├── delete.php
+            ├── src/
+            │   └── Models/
+            │       ├── User.php
+            │       └── Address.php
+            ├── composer.json
+            ├── composer.lock
+            └── README.md
+```
 
 ---
 
@@ -41,15 +42,11 @@ php_tips/
 
 ## 🐳 Configuração do Ambiente com Docker
 
-O ambiente foi criado utilizando os seguintes arquivos:
-
 ### 🧩 `Dockerfile`
 ```dockerfile
 FROM php:8.1-apache
 
-RUN apt-get update && apt-get install -y \
-    git zip unzip libzip-dev libpng-dev libonig-dev libxml2-dev && \
-    docker-php-ext-install pdo pdo_mysql
+RUN apt-get update && apt-get install -y     git zip unzip libzip-dev libpng-dev libonig-dev libxml2-dev &&     docker-php-ext-install pdo pdo_mysql
 
 RUN a2enmod rewrite
 
@@ -57,11 +54,10 @@ WORKDIR /var/www/html
 COPY ./src /var/www/html
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+```
 
----
-
-## ⚙️ Arquivo docker-compose.yml:
-
+### ⚙️ `docker-compose.yml`
+```yaml
 version: "3.8"
 
 services:
@@ -113,103 +109,114 @@ volumes:
 
 networks:
   devnet:
-
-  ---
-
-  🚀 Como Executar
-
-Subir o ambiente Docker:
-
-docker-compose up -d --build
-
-
-Acessar os serviços:
-
-Aplicação PHP → http://localhost:8080
-
-phpMyAdmin → http://localhost:8081
-
-Entrar no container PHP (opcional):
-
-docker exec -it php81-apache bash
-
-
-Instalar dependências do Composer (caso necessário):
-
-docker exec -it php81-apache composer install
+```
 
 ---
 
-🗄️ Banco de Dados
+## 🚀 Como Executar
 
-O banco appdb contém duas tabelas:
+1. **Subir o ambiente Docker:**
+   ```bash
+   docker-compose up -d --build
+   ```
 
-Tabela users
-Campo	Tipo	Descrição
-id	INT (PK, AI)	Identificador único
-first_name	VARCHAR(255)	Nome
-last_name	VARCHAR(255)	Sobrenome
-genre	VARCHAR(11)	Gênero (M/F)
-created_at	TIMESTAMP	Data de criação
-updated_at	TIMESTAMP	Última atualização
+2. **Acessar os serviços:**
+   - Aplicação PHP → [http://localhost:8080](http://localhost:8080)
+   - phpMyAdmin → [http://localhost:8081](http://localhost:8081)
 
-Tabela addresses
-Campo	Tipo	Descrição
-addr_id	INT (PK, AI)	Identificador único
-user_id	INT (FK)	ID do usuário
-street	VARCHAR(255)	Rua
-number	VARCHAR(255)	Número da residência
+3. **Entrar no container PHP (opcional):**
+   ```bash
+   docker exec -it php81-apache bash
+   ```
 
-🔗 Relação: addresses.user_id referencia users.id
+4. **Instalar dependências do Composer (caso necessário):**
+   ```bash
+   docker exec -it php81-apache composer install
+   ```
 
 ---
 
-🧪 Testando
+## 🗄️ Banco de Dados
 
-Insira alguns usuários e endereços no banco via phpMyAdmin.
+O banco **appdb** contém duas tabelas principais:
 
-Acesse no navegador:
+### 🧍 `users`
 
-http://localhost:8080/public/ep02/examples/read.php
+| Campo | Tipo | Descrição |
+|--------|------|-----------|
+| id | INT (PK, AI) | Identificador único |
+| first_name | VARCHAR(255) | Nome |
+| last_name | VARCHAR(255) | Sobrenome |
+| genre | VARCHAR(11) | Gênero (M/F) |
+| created_at | TIMESTAMP | Data de criação |
+| updated_at | TIMESTAMP | Última atualização |
 
+### 🏠 `addresses`
 
-O resultado exibirá os usuários e seus respectivos endereços.
+| Campo | Tipo | Descrição |
+|--------|------|-----------|
+| addr_id | INT (PK, AI) | Identificador único |
+| user_id | INT (FK) | ID do usuário |
+| street | VARCHAR(255) | Rua |
+| number | VARCHAR(255) | Número da residência |
 
-💡 Observações
+🔗 Relação: `addresses.user_id` referencia `users.id`
 
-O host MySQL dentro do PHP é sempre mysql, conforme definido no docker-compose.yml.
+---
 
-A porta configurada para o container MySQL é 3306 (internamente).
+## 🧪 Testando
 
-Use 3307 apenas se quiser acessar o banco fora do Docker (ex: DBeaver, HeidiSQL, etc).
+1. Insira alguns usuários e endereços no banco via phpMyAdmin.
+2. Acesse no navegador:
+   ```
+   http://localhost:8080/public/ep02/examples/read.php
+   ```
+3. O resultado exibirá os usuários e seus respectivos endereços.
 
-As credenciais de acesso padrão são:
+---
 
-host: mysql
-user: appuser
-pass: apppass
-db:   appdb
+## 💡 Observações
 
-🧰 Comandos Úteis
+- O host MySQL dentro do PHP é sempre `mysql`, conforme definido no `docker-compose.yml`.
+- Porta interna do MySQL: `3306`  
+- Porta externa (para ferramentas externas): `3307`
+- Credenciais padrão:
+  ```
+  host: mysql
+  user: appuser
+  pass: apppass
+  db:   appdb
+  ```
+
+---
+
+## 🧰 Comandos Úteis
+
+```bash
 # Acessar o container PHP
 docker exec -it php81-apache bash
 
-# Atualizar o pacote DataLayer
+# Atualizar o DataLayer
 docker exec -it php81-apache composer update coffeecode/datalayer
 
 # Ver logs do Apache
 docker logs php81-apache
 
-# Remover tudo e reconstruir do zero
+# Remover tudo e reconstruir
 docker-compose down -v && docker-compose up -d --build
+```
 
-✍️ Autor
+---
 
-Nicolas Torelli
-Desenvolvedor Web • Estudante de Tecnologia • Entusiasta de Docker, PHP e Linux.
-📍 Projeto criado para estudos práticos com PHP moderno e boas práticas.
+## ✍️ Autor
 
-🧾 Licença
+**Nicolas Torelli**  
+Desenvolvedor Web • Estudante de Tecnologia • Entusiasta de Docker, PHP e Linux.  
+📍 Projeto criado para estudos práticos com **PHP moderno e boas práticas.**
 
-Este projeto é distribuído sob a licença MIT.
+---
+
+## 🧾 Licença
+
+Este projeto é distribuído sob a licença **MIT**.  
 Sinta-se livre para estudar, modificar e compartilhar.
