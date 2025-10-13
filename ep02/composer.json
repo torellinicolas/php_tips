@@ -1,0 +1,23 @@
+{
+      "name" : "nicolastorelli/phptips002",
+      "description" : "Abstração de Banco de Dados com Data Layer | PHP Tips",
+      "minimum-stability": "stable",
+      "license": "MIT",
+      "authors" : [
+            {
+                  "name": "Nicolas Torelli",
+                  "email": "devtorelli@gmail.com"
+            }
+      ],
+      "autoload": {
+            "psr-4": {
+                  "Source\\" : "source/"
+            },
+            "files": [
+                  "source/Config.php"
+            ]
+      },
+      "require": {
+            "coffeecode/datalayer" : "dev-master"
+      }
+}

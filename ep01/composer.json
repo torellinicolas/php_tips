@@ -1,0 +1,28 @@
+ {
+    "name": "nicolastorelli/phptips001",
+    "description": "Conhecendo o composer e configurando a IDE / PHP Tips #001",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas Torelli",
+            "email": "nicolaspenatorelli@gmail.com",
+            "role" : "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source/"
+        },
+        "files": [
+            "source/Config.php"
+        ]
+    },
+    "require": {
+        "phpmailer/phpmailer": "6.0.*"
+    }
+}
