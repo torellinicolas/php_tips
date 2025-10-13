@@ -1,0 +1,67 @@
+# Dependências do Composer
+ep01/vendor/
+ep02/vendor/
+ep03/vendor/
+ep04/vendor/
+ep05/vendor/
+ep06/vendor/
+ep07/vendor/
+ep08/vendor/
+ep09/vendor/
+ep10/vendor/
+ep11/vendor/
+ep12/vendor/
+ep13/vendor/
+ep14/vendor/
+ep15/vendor/
+ep16/vendor/
+ep17/vendor/
+ep18/vendor/
+ep19/vendor/
+ep20/vendor/
+ep01/composer.lock
+ep02/composer.lock
+ep03/composer.lock
+ep04/composer.lock
+ep05/composer.lock
+ep06/composer.lock
+ep07/composer.lock
+ep08/composer.lock
+ep09/composer.lock
+ep10/composer.lock
+ep11/composer.lock
+ep12/composer.lock
+ep13/composer.lock
+ep14/composer.lock
+ep15/composer.lock
+ep16/composer.lock
+ep17/composer.lock
+ep18/composer.lock
+ep19/composer.lock
+ep20/composer.lock
+
+# Arquivos de ambiente
+.env
+.env.*.php
+.env.backup
+
+# Logs, caches, uploads temporários
+*.log
+/tmp/
+/logs/
+/cache/
+
+# Configurações locais de editor/IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos gerados, builds, etc.
+node_modules/
+dist/
+public/storage/
+
+# Docker
+docker-compose.override.yml
+.env.docker
