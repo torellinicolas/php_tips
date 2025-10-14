@@ -1,0 +1,23 @@
+{
+      "name" : "nicolastorelli/phptips003",
+      "description" : "Enviando E-mails Autenticados com PHPMailer | PHP Tips",
+      "minimum-stability": "stable",
+      "license": "MIT",
+      "authors" : [
+            {
+                  "name": "Nicolas Torelli",
+                  "email": "devtorelli@gmail.com"
+            }
+      ],
+      "autoload": {
+            "psr-4": {
+                  "Source\\" : "source/"
+            },
+            "files": [
+                  "source/Config.php"
+            ]
+      },
+      "require": {
+            "phpmailer/phpmailer": "6.0.7"
+      }
+}
