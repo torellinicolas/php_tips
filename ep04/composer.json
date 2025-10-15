@@ -1,0 +1,23 @@
+{
+      "name" : "nicolastorelli/phptips004",
+      "description" : "Rotas, Call Backs e Estrutura MVC com Router | PHP Tips",
+      "minimum-stability": "stable",
+      "license": "MIT",
+      "authors" : [
+            {
+                  "name": "Nicolas Torelli",
+                  "email": "devtorelli@gmail.com"
+            }
+      ],
+      "autoload": {
+            "psr-4": {
+                  "Source\\" : "source/"
+            },
+            "files": [
+                  "source/Config.php"
+            ]
+      },
+      "require": {
+            "coffeecode/router": "2.0.*"
+      }
+}
