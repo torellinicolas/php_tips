@@ -39,6 +39,9 @@ ep17/composer.lock
 ep18/composer.lock
 ep19/composer.lock
 ep20/composer.lock
+desafio1
+desafio1/vendor/
+desafio1/composer.lock
 
 # Arquivos de ambiente
 .env

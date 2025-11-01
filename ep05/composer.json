@@ -1,0 +1,25 @@
+{
+      "name" : "nicolastorelli/phptips005",
+      "description" : "Gerando Blog com Paginação de Resultados | PHP Tips 005",
+      "minimum-stability": "stable",
+      "license": "MIT",
+      "authors" : [
+            {
+                  "name": "Nicolas Torelli",
+                  "email": "devtorelli@gmail.com"
+            }
+      ],
+      "autoload": {
+            "psr-4": {
+                  "Source\\" : "source/"
+            },
+            "files": [
+                  "source/Config.php"
+            ]
+      },
+      "require": {
+            "fzaninotto/faker": "dev-master",
+            "coffeecode/datalayer": "dev-master",
+            "coffeecode/paginator": "dev-master"
+      }
+}
