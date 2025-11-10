@@ -42,6 +42,7 @@ ep20/composer.lock
 desafio1
 desafio1/vendor/
 desafio1/composer.lock
+users-crud-datalayer
 
 # Arquivos de ambiente
 .env

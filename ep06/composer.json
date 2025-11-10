@@ -1,0 +1,24 @@
+{
+      "name" : "nicolastorelli/phptips006",
+      "description" : "Login Social via Facebook com Oauth 2 Client | PHP Tips 006",
+      "minimum-stability": "stable",
+      "license": "MIT",
+      "authors" : [
+            {
+                  "name": "Nicolas Torelli",
+                  "email": "devtorelli@gmail.com"
+            }
+      ],
+      "autoload": {
+            "psr-4": {
+                  "Source\\" : "source/"
+            },
+            "files": [
+                  "source/Config.php"
+            ]
+      },
+      "require": {
+            "facebook/graph-sdk": "^5.1"            
+            
+      }
+}
